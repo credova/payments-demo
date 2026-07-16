@@ -290,36 +290,36 @@ export function useCheckoutSubmit() {
     cartAmount.current = amount;
   }
 
-  async function onGooglePayPaymentAuthorized(
-    google_pay: any,
-    values: {
-      amount: number;
-      customer: any;
-      address: any;
-    },
-  ) {
+  async function onGooglePayPaymentAuthorized(google_pay: any) {
     try {
       if (!submitting) {
         setSubmitting(true);
 
-        // Create a Google Pay payment method from the encrypted payment token
         const googlePayToken = google_pay.paymentMethodData;
         const googlePay = await createGooglePay(googlePayToken);
 
         if (googlePay) {
-          // Send the payment method to the backend for payment processing
-          const payment = await capturePayment(
+          const walletBillingAddress = google_pay.paymentMethodData?.info?.billingAddress;
+          const billingDetails = walletBillingAddress && {
+            address_line_1: walletBillingAddress.address1,
+            address_line_2: walletBillingAddress.address2 || undefined,
+            city: walletBillingAddress.locality,
+            state: walletBillingAddress.administrativeArea,
+            postal_code: walletBillingAddress.postalCode,
+            country: walletBillingAddress.countryCode,
+          };
+
+          const intent = await createPaymentIntent(
             cartAmount.current,
-            values,
-            { googlePay },
-            'payment',
+            { google_pay: googlePay.id },
+            billingDetails,
           );
 
-          setSubmitting(false);
-
-          //return payment;
-          if (payment?.id) {
-            router.push(`/ecommerce/orders/${payment.id}/summary`);
+          if (intent?.id) {
+            const paymentIntent = await confirmPaymentIntent(intent.id, {});
+            if (paymentIntent?.payment_id) {
+              router.push(`/ecommerce/orders/${paymentIntent.payment_id}/summary`);
+            }
           }
         } else {
           console.error('Google Pay payment method creation failed');
@@ -367,7 +367,7 @@ export function useCheckoutSubmit() {
         if (!card) return;
         console.debug('createCard: ', card);
 
-        const intent = await createPaymentIntent(amount, card.id);
+        const intent = await createPaymentIntent(amount, { card: card.id });
         if (!intent?.id) return;
 
         const session = await createThreeDsSession(card.token, intent.id, 'no-preference');
@@ -438,10 +438,21 @@ export function useCheckoutSubmit() {
     }
   }
 
-  async function createPaymentIntent(amount: number, cardId: string): Promise<PaymentIntentModel> {
+  async function createPaymentIntent(
+    amount: number,
+    paymentMethod: { card?: string; google_pay?: string },
+    billingDetails?: {
+      address_line_1?: string;
+      address_line_2?: string;
+      city?: string;
+      state?: string;
+      postal_code?: string;
+      country?: string;
+    },
+  ): Promise<PaymentIntentModel> {
     const response = await fetch('/api/payment-intents', {
       method: 'POST',
-      body: JSON.stringify({ amount, cardId }),
+      body: JSON.stringify({ amount, paymentMethod, billingDetails }),
       headers: { 'Content-Type': 'application/json' },
     });
     return response.json();
