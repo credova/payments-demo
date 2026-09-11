@@ -3,9 +3,8 @@
 Branding rules for the payments demo. Terse by intent. Apply verbatim.
 
 The demo is a Tailwind UI storefront whose job is to showcase the payments SDK, not the
-brand. Brand work stays inside the surfaces named here and never reshapes layout. Adapted
-from the customer-portal `DESIGN.md`; the portal's component rules (alerts, radius,
-elevation, motion) do not apply here.
+brand. Brand work stays inside the surfaces named here. Adapted from the customer-portal
+`DESIGN.md`; other Credova design system rules do not apply here on the demo site.
 
 ---
 
