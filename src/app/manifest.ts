@@ -1,8 +1,6 @@
 import type { MetadataRoute } from 'next';
 import config from '@config';
 
-// name + icons only: no start_url/display, so the demo stays non-installable and this
-// exists purely to give Android a proper home-screen icon.
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: config.seoTitle,

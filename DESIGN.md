@@ -3,9 +3,9 @@
 Branding rules for the payments demo. Terse by intent. Apply verbatim.
 
 The demo is a Tailwind UI storefront whose job is to showcase the payments SDK, not the
-brand. Rebrand work stays inside the branding surfaces named here and never reshapes
-layout. Adapted from the customer-portal `DESIGN.md`; the portal's component rules
-(alerts, radius, elevation, motion) do not apply here.
+brand. Brand work stays inside the surfaces named here and never reshapes layout. Adapted
+from the customer-portal `DESIGN.md`; the portal's component rules (alerts, radius,
+elevation, motion) do not apply here.
 
 ---
 
@@ -45,19 +45,22 @@ the metadata description in `src/app/layout.tsx`. Those say "Credova".
 
 Rules from the guidebook Logo page and Figma Logo & Brand:
 
-- Only render the approved artwork in `public/`. Never typeset "credova" in a text font
-  as a logo stand-in.
-- Colorways: white on dark (`logo-white.svg`, `logo-mark-white.svg`), `#004059` teal on
-  light (`logo-dark.svg`). No other fills. The header and footer sit on dark surfaces, so
-  they use white.
+- Only render the approved artwork. Never typeset "credova" in a text font as a logo
+  stand-in.
+- Colorways: white on dark, `#004059` teal on light. No other fills. The header and footer
+  sit on dark surfaces, so they use white.
 - Wordmark aspect ratio is 177×34. Components size it with a fixed height and `w-auto`
   (`h-5` in the header, `h-10` in the footer). Don't stretch, restyle, or recolor.
 - Clear space ≥ 16px on all sides.
 
-Assets are generated, not hand-edited. `scripts/gen-logos.sh` embeds the paths exported
-from Figma node `267:53556` (wordmark) and `267:53585` (mark) and writes all three files.
-Re-run it if the Figma artwork changes, and keep the file names stable so `config.ts`
-needs no edit.
+| File                         | Artwork                            |
+| ---------------------------- | ---------------------------------- |
+| `public/logo-white.svg`      | Wordmark, white, for dark surfaces |
+| `public/logo-dark.svg`       | Wordmark, `#004059`, for light     |
+| `public/logo-mark-white.svg` | Mark only, white, for dark         |
+
+Paths come from Figma Logo & Brand (wordmark node `267:53556`, mark node `267:53585`).
+Keep the file names stable so `config.ts` needs no edit when artwork changes.
 
 ---
 
@@ -75,55 +78,26 @@ maintain.
 | `src/app/manifest.ts`         | `name` + `icons` only, name read from `config.seoTitle`.  |
 | `public/icon-192.png`, `-512` | Manifest icons, `any` and `maskable`. Mark at 63%.        |
 
-The manifest deliberately omits `start_url` and `display`, so the demo is not installable.
-It exists only so Android gets a proper home-screen icon. Don't add `theme_color` or
+The manifest omits `start_url` and `display`, so the demo is not installable. It exists
+only so Android gets a proper home-screen icon. Don't add `theme_color` or
 `background_color` without also deciding the install story.
 
 ---
 
 ## Color
 
-The demo's theme colors are literals in `config.ts` (`theme.colors`), mapped into
-Tailwind by `tailwind.config.ts`. They are still Tailwind UI indigo and a gray-900 navbar.
+Theme colors are literals in `config.ts` (`theme.colors`), mapped into Tailwind by
+`tailwind.config.ts`: `primary`, `primary-dark`, and `navbar`. Use the tokens, never hex
+literals in components.
 
-| Token          | Current   | Brand target           |
-| -------------- | --------- | ---------------------- |
-| `primary`      | `#4f46e5` | `#004059` Primary Teal |
-| `primary-dark` | `#4338ca` | `#002E40` Primary Dark |
-| `navbar`       | `#111827` | `#004059` or keep dark |
-
-The swap is deliberately not part of the logo rebrand. `primary-dark` is also used as the
-active-tab text color on the dark navbar, so moving it to `#002E40` needs a contrast pass
-on `TopNav.tsx` first. Tracked under [Pending implementation](#pending-implementation).
+On the dark `navbar` surface, text is white in every state. Hover dims to `gray-300`, and
+the open or selected state is shown by a white underline, not a text color change.
+`primary-dark` is a light-surface color: use it for text and underlines only on white
+(mobile menu tabs, buttons, form controls).
 
 ---
 
 ## Typography
 
-The demo ships Inter via `next/font/google` in `src/app/layout.tsx`. The guidebook
-specifies Matter SQ, which is unlicensed here, so Inter stays until a license lands. Swap
-the loader in one place; no per-component font overrides.
-
----
-
-## Verify
-
-```bash
-rg -i "publicsquare|public square" src config.ts   # → SDK imports and API env vars only
-rg "tailwindui" src next.config.mjs                  # → none
-rg -n "logo" src config.ts                           # → config.ts keys and their two readers
-```
-
-The first sweep is expected to hit `@publicsquare/elements-react` imports and
-`NEXT_PUBLIC_PUBLICSQUARE_*` env names. Those are the payments API's product name, not
-storefront branding, and stay as they are.
-
----
-
-## Pending implementation
-
-- Theme colors: move `primary` / `primary-dark` / `navbar` in `config.ts` to the brand
-  values above after checking `TopNav.tsx` active-state contrast.
-- Font: Inter stays the shipping face until Matter SQ is licensed.
-- Footer tagline and link columns are Tailwind UI placeholder copy, not brand copy.
-  Replace only if the demo grows a real footer.
+The demo ships Inter via `next/font/google` in `src/app/layout.tsx`. Swap the loader in
+one place; no per-component font overrides.
