@@ -70,7 +70,7 @@ export default function TopNav() {
                   {navigation.categories.map((category) => (
                     <Tab
                       key={category.name}
-                      className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-white data-[selected]:border-primary-dark data-[selected]:text-primary-dark"
+                      className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-primary-dark data-[selected]:text-primary-dark"
                     >
                       {category.name}
                     </Tab>
@@ -216,7 +216,7 @@ export default function TopNav() {
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
                     <Link href="/ecommerce" className="border-none">
-                      <span className="sr-only">Your Company</span>
+                      <span className="sr-only">Credova</span>
                       <Image
                         alt=""
                         src={config.logo}
@@ -235,7 +235,7 @@ export default function TopNav() {
                         {navigation.categories.map((category, categoryIdx) => (
                           <Popover key={category.name} className="flex">
                             <div className="relative flex">
-                              <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-white transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-primary-dark data-[open]:text-primary-dark">
+                              <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-white transition-colors duration-200 ease-out hover:text-gray-300 data-[open]:border-white">
                                 {category.name}
                               </PopoverButton>
                             </div>
@@ -372,10 +372,10 @@ export default function TopNav() {
 
                   {/* Logo (lg-) */}
                   <a href="#" className="lg:hidden">
-                    <span className="sr-only">Your Company</span>
+                    <span className="sr-only">Credova</span>
                     <Image
                       alt=""
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                      src={config.logoMark}
                       width={32}
                       height={32}
                       className="h-8 w-auto"

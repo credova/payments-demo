@@ -1,8 +1,9 @@
 const defaultConfig = {
-  seoTitle: 'PublicSquare Shop',
+  seoTitle: 'Credova Shop',
   tagline: 'Making the world a better place through constructing elegant payment solutions.',
-  trademark: 'PublicSquare Financial, LLC. All rights reserved.',
+  trademark: 'Credova. All rights reserved.',
   logo: '/logo-white.svg',
+  logoMark: '/logo-mark-white.svg',
   theme: {
     colors: {
       primary: '#4f46e5',
