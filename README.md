@@ -25,7 +25,7 @@ bun install
 
 [hk](https://hk.jdx.dev/) manages the git hooks; `hk.pkl` defines them. `mise install` installs
 the hooks via its `postinstall` hook, so there is no separate setup step. The `pre-commit` hook
-runs Prettier and ESLint over staged files and stages the fixes.
+runs oxfmt and oxlint over staged files and stages the fixes.
 
 ```bash
 hk check --all   # lint the whole repo (what CI runs)
@@ -53,12 +53,13 @@ Then open [http://localhost:3000/ecommerce](http://localhost:3000/ecommerce) wit
 
 ## Scripts
 
-| Command            | Description                                           |
-| ------------------ | ----------------------------------------------------- |
-| `bun dev`          | Start the Next.js dev server on http://localhost:3000 |
-| `bun run build`    | Production build                                      |
-| `bun start`        | Serve the production build                            |
-| `bun run lint`     | Run ESLint                                            |
-| `bun run lint:fix` | Run ESLint with `--fix`                               |
-| `bun run prettier` | Format with Prettier                                  |
-| `bun audit`        | Check dependencies for known vulnerabilities          |
+| Command                | Description                                           |
+| ---------------------- | ----------------------------------------------------- |
+| `bun dev`              | Start the Next.js dev server on http://localhost:3000 |
+| `bun run build`        | Production build                                      |
+| `bun start`            | Serve the production build                            |
+| `bun run lint`         | Run oxlint                                            |
+| `bun run lint:fix`     | Run oxlint with `--fix`                               |
+| `bun run format`       | Format with oxfmt                                     |
+| `bun run format:check` | Check formatting with oxfmt                           |
+| `bun audit`            | Check dependencies for known vulnerabilities          |

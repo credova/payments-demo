@@ -33,7 +33,7 @@ export default function Cart() {
               Items in your shopping cart
             </h2>
 
-            <ul role="list" className="divide-y divide-gray-200 border-b border-t border-gray-200">
+            <ul className="divide-y divide-gray-200 border-b border-t border-gray-200">
               {cart.items.length ? (
                 cart.items.map((product, productIdx) => (
                   <li key={product.item.id} className="flex py-6 sm:py-10">

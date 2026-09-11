@@ -483,7 +483,7 @@ function Component() {
 
                   <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
                     <h3 className="sr-only">Items in your cart</h3>
-                    <ul role="list" className="divide-y divide-gray-200">
+                    <ul className="divide-y divide-gray-200">
                       {cart.items.map((product) => (
                         <li key={product.item.id} className="flex px-4 py-6 sm:px-6">
                           <div className="flex-shrink-0">
