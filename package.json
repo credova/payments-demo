@@ -1,13 +1,16 @@
 {
-  "name": "publicsquare-demo",
-  "version": "0.1.0",
+  "name": "payments-demo",
+  "version": "0.2.0",
   "private": true,
+  "packageManager": "bun@1.4.2",
+  "engines": {
+    "bun": ">=1.4.0"
+  },
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "prepare": "husky",
-    "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md}",
+    "prettier": "prettier --write .",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
@@ -35,7 +38,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "classnames": "^2.5.1",
     "formik": "^2.4.6",
-    "next": "15.5.21",
+    "next": "15.5.24",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -59,8 +62,6 @@
     "eslint-plugin-prettier": "^5.2.4",
     "eslint-plugin-testing-library": "^7.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.0.0",
     "postcss": "^8.5.23",
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.6.8",
