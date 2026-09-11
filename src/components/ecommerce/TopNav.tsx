@@ -216,7 +216,7 @@ export default function TopNav() {
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
                     <Link href="/ecommerce" className="border-none">
-                      <span className="sr-only">Your Company</span>
+                      <span className="sr-only">Credova</span>
                       <Image
                         alt=""
                         src={config.logo}
@@ -372,10 +372,10 @@ export default function TopNav() {
 
                   {/* Logo (lg-) */}
                   <a href="#" className="lg:hidden">
-                    <span className="sr-only">Your Company</span>
+                    <span className="sr-only">Credova</span>
                     <Image
                       alt=""
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                      src={config.logoMark}
                       width={32}
                       height={32}
                       className="h-8 w-auto"

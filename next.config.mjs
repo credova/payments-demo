@@ -5,14 +5,6 @@ const allowedDevOrigins = process.env.ALLOWED_DEV_ORIGINS
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'tailwindui.com',
-      },
-    ],
-  },
 };
 
 export default nextConfig;

@@ -101,7 +101,7 @@ export default function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <Image
-              alt="PublicSquare Financial"
+              alt="Credova"
               src={config.logo}
               sizes="100vw"
               width={1000}

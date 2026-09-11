@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: config.seoTitle,
-  description: 'Shop great products from PublicSquare',
+  description: 'Shop great products from Credova',
 };
 
 export default function RootLayout({
