@@ -1,5 +1,5 @@
 {
-  "lockfileVersion": 3,
+  "lockfileVersion": 2,
   "configVersion": 1,
   "workspaces": {
     "": {
@@ -32,9 +32,6 @@
     },
   },
   "overrides": {
-    "@eslint/eslintrc": {
-      "minimatch": "^3.1.5",
-    },
     "ajv": "^6.14.0",
     "axios": "^1.16.0",
     "brace-expansion": "^2.1.4",
