@@ -1,0 +1,36 @@
+amends "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Config.pkl"
+
+local linters = new Mapping<String, Step> {
+    ["prettier"] {
+        glob = List("**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.json", "**/*.css", "**/*.scss", "**/*.md")
+        check = "bunx prettier --check {{files}}"
+        check_list_files = "bunx prettier --list-different {{files}}"
+        fix = "bunx prettier --write {{files}}"
+    }
+    ["eslint"] {
+        glob = List("**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx")
+        check = "bunx eslint {{files}}"
+        fix = "bunx eslint --fix {{files}}"
+    }
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true    // apply the fix command so formatting lands in the commit
+        stash = "git" // keep unstaged work out of the way while fixing
+        steps {
+            ...linters
+        }
+    }
+    // `hk check` / `hk fix` run the same linters over the whole repo.
+    ["check"] {
+        steps {
+            ...linters
+        }
+    }
+    ["fix"] {
+        steps {
+            ...linters
+        }
+    }
+}
