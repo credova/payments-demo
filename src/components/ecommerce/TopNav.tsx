@@ -87,7 +87,6 @@ export default function TopNav() {
                             Featured
                           </p>
                           <ul
-                            role="list"
                             aria-labelledby={`mobile-featured-heading-${categoryIdx}`}
                             className="mt-6 space-y-6"
                           >
@@ -105,7 +104,6 @@ export default function TopNav() {
                             Categories
                           </p>
                           <ul
-                            role="list"
                             aria-labelledby="mobile-categories-heading"
                             className="mt-6 space-y-6"
                           >
@@ -125,7 +123,6 @@ export default function TopNav() {
                             Collection
                           </p>
                           <ul
-                            role="list"
                             aria-labelledby="mobile-collection-heading"
                             className="mt-6 space-y-6"
                           >
@@ -143,11 +140,7 @@ export default function TopNav() {
                           <p id="mobile-brand-heading" className="font-medium text-gray-900">
                             Brands
                           </p>
-                          <ul
-                            role="list"
-                            aria-labelledby="mobile-brand-heading"
-                            className="mt-6 space-y-6"
-                          >
+                          <ul aria-labelledby="mobile-brand-heading" className="mt-6 space-y-6">
                             {category.brands.map((item) => (
                               <li key={item.name} className="flex">
                                 <a href={item.href} className="text-gray-500">
@@ -262,7 +255,6 @@ export default function TopNav() {
                                           Featured
                                         </p>
                                         <ul
-                                          role="list"
                                           aria-labelledby={`desktop-featured-heading-${categoryIdx}`}
                                           className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                         >
@@ -283,7 +275,6 @@ export default function TopNav() {
                                           Categories
                                         </p>
                                         <ul
-                                          role="list"
                                           aria-labelledby="desktop-categories-heading"
                                           className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                         >
@@ -306,7 +297,6 @@ export default function TopNav() {
                                           Collection
                                         </p>
                                         <ul
-                                          role="list"
                                           aria-labelledby="desktop-collection-heading"
                                           className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                         >
@@ -328,7 +318,6 @@ export default function TopNav() {
                                           Brands
                                         </p>
                                         <ul
-                                          role="list"
                                           aria-labelledby="desktop-brand-heading"
                                           className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                         >
@@ -422,7 +411,7 @@ export default function TopNav() {
                             <h2 className="sr-only">Shopping Cart</h2>
 
                             <form className="mx-auto max-w-2xl px-4">
-                              <ul role="list" className="divide-y divide-gray-200">
+                              <ul className="divide-y divide-gray-200">
                                 {cart.items.length ? (
                                   cart.items.map((product) => (
                                     <li key={product.item.id} className="flex items-center py-6">

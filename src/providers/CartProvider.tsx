@@ -57,6 +57,10 @@ export const CartProvider = ({ children }: PropsWithChildren<PublicSquareProvide
     _setBillingDetails(data);
   }
 
+  // oxlint's react/set-state-in-effect flags the setState calls below as a cascading render.
+  // That is intentional here: localStorage is unavailable during SSR, so the cart can only be
+  // hydrated on mount. A lazy useState initializer would read localStorage during render and
+  // produce server/client markup that does not match.
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (window.localStorage.getItem('cart')) {

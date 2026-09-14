@@ -18,7 +18,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Customer Wallet
         </h1>
-        <ul role="list" className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {cards.map((card) => (
             <li key={card.id}>
               <div className="space-y-2 rounded-lg border px-6 py-8">

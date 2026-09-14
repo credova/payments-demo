@@ -1,16 +1,16 @@
 amends "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Config.pkl"
 
 local linters = new Mapping<String, Step> {
-    ["prettier"] {
+    ["oxfmt"] {
         glob = List("**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.json", "**/*.css", "**/*.scss", "**/*.md")
-        check = "bunx prettier --check {{files}}"
-        check_list_files = "bunx prettier --list-different {{files}}"
-        fix = "bunx prettier --write {{files}}"
+        check = "bunx oxfmt --check {{files}}"
+        check_list_files = "bunx oxfmt --list-different {{files}}"
+        fix = "bunx oxfmt {{files}}"
     }
-    ["eslint"] {
+    ["oxlint"] {
         glob = List("**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx")
-        check = "bunx eslint {{files}}"
-        fix = "bunx eslint --fix {{files}}"
+        check = "bunx oxlint {{files}}"
+        fix = "bunx oxlint --fix {{files}}"
     }
 }
 

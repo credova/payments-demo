@@ -10,14 +10,14 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier --write .",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "resolutions": {
     "brace-expansion": "^2.1.4",
     "js-yaml": "^4.3.1",
-    "@eslint/eslintrc/minimatch": "^3.1.5",
     "postcss": "^8.5.23",
     "follow-redirects": "^1.16.0",
     "lodash": "^4.18.0",
@@ -46,27 +46,14 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.8",
     "@types/node": "^24.1.0",
     "@types/prismjs": "^1.26.4",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
-    "@typescript-eslint/eslint-plugin": "^8.24.1",
-    "@typescript-eslint/parser": "^8.25.0",
-    "eslint": "^9.26.0",
-    "eslint-config-next": "^15.3.1",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jest": "^29.0.1",
-    "eslint-plugin-jest-dom": "^5.5.0",
-    "eslint-plugin-prettier": "^5.2.4",
-    "eslint-plugin-testing-library": "^7.1.1",
-    "eslint-plugin-unused-imports": "^4.1.4",
+    "oxfmt": "0.67.0",
+    "oxlint": "1.82.0",
     "postcss": "^8.5.23",
-    "prettier": "^3.5.1",
-    "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.28.0"
+    "typescript": "^5.6.2"
   }
 }
