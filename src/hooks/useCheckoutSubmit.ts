@@ -68,13 +68,10 @@ export function useCheckoutSubmit() {
   ) {
     if (values.name_on_card && card && publicsquare) {
       try {
-        const response = await publicsquare.cards.create(
-          {
-            cardholder_name: values.name_on_card,
-            card,
-          },
-          environment,
-        );
+        const response = await publicsquare.cards.create({
+          cardholder_name: values.name_on_card,
+          card,
+        });
         if (response) {
           return response;
         }
@@ -467,7 +464,6 @@ export function useCheckoutSubmit() {
           token_id: tokenId,
           payment_intent_id: paymentIntentId,
           challenge_preference: challengePreference,
-          environment: 'TEST',
         });
         if (response) {
           return response as { id: string; bt_session_id: string; acs_transaction_id: string };

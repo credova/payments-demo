@@ -174,7 +174,6 @@ function Component() {
             <b>3DS Challenge</b> — complete the authentication below
           </div>
           <ThreeDSChallengeElement
-            environment="TEST"
             sessionId={threeDsChallenge.btSessionId}
             acsChallengeUrl={acs_challenge_url}
             acsTransactionId={acs_transaction_id}
