@@ -128,7 +128,6 @@ function PayoutCard() {
                 },
                 cardElement,
                 'payout',
-                'TEST',
               ).then((payment) => {
                 if (payment.id) {
                   alert(`Payout successfully sent ${payment.id}`);
