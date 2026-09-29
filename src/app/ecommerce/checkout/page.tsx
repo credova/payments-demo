@@ -200,7 +200,6 @@ function Component() {
               values as any,
               cardElement,
               'payment',
-              'TEST',
             );
             if (payment.id) {
               router.push(`/ecommerce/orders/${payment.id}/summary`);
