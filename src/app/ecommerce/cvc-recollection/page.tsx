@@ -52,7 +52,7 @@ function Flow() {
     setBusy(undefined);
   }
 
-  // Step 2: the shopper re-enters the CVV. It goes from the iframe to Basis Theory, never to us.
+  // Step 2: the shopper re-enters the CVC. It goes from the iframe to Basis Theory, never to us.
   async function updateCvc() {
     if (!publicsquare || !cvcElement.current || !card || busy) return;
     setBusy('cvc');
@@ -103,9 +103,9 @@ function Flow() {
   return (
     <div className="mx-auto max-w-2xl space-y-8 px-4 py-16 sm:px-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">CVV recollection</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">CVC recollection</h1>
         <p className="mt-2 text-sm text-gray-500">
-          Saved card, then a re-entered CVV attached with <code>cards.updateCvc()</code>, then a
+          Saved card, then a re-entered CVC attached with <code>cards.updateCvc()</code>, then a
           charge. Basis Theory keeps the CVC on the token for at most 24 hours.
         </p>
       </div>
@@ -139,12 +139,12 @@ function Flow() {
       </section>
 
       <section className={`space-y-4 rounded-lg border p-6 ${card ? '' : 'opacity-50'}`}>
-        <h2 className="font-semibold">2. Re-enter the CVV</h2>
+        <h2 className="font-semibold">2. Re-enter the CVC</h2>
         <div className="rounded-md border border-gray-300 py-1">
           <CardVerificationCodeElement ref={cvcElement} id="cvc-element" />
         </div>
         <Button disabled={!card} loading={busy === 'cvc'} onClick={updateCvc}>
-          Update CVV
+          Update CVC
         </Button>
       </section>
 
@@ -164,7 +164,7 @@ function Flow() {
           Charge saved card
         </Button>
         <p className="text-xs text-gray-500">
-          Press again after a decline to retry without updating the CVV.
+          Press again after a decline to retry without updating the CVC.
         </p>
       </section>
 
