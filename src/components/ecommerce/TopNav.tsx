@@ -190,6 +190,13 @@ export default function TopNav() {
                   Admin
                 </Link>
                 <span aria-hidden="true" className="h-6 w-px bg-gray-600" />
+                <Link
+                  href="/ecommerce/cvc-recollection"
+                  className="text-sm font-medium text-white hover:text-gray-100"
+                >
+                  CVC recollection
+                </Link>
+                <span aria-hidden="true" className="h-6 w-px bg-gray-600" />
                 <a href="#" className="text-sm font-medium text-white hover:text-gray-100">
                   Create an account
                 </a>

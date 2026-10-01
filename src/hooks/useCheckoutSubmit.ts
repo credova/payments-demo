@@ -43,12 +43,11 @@ export function useCheckoutSubmit() {
     },
     cardElement: RefObject<PublicSquareTypes.CardElement | null>,
     type: 'payment' | 'payout' = 'payment',
-    environment: 'TEST' | 'PRODUCTION',
   ) {
     try {
       if (cardElement.current && !submitting) {
         setSubmitting(true);
-        const card = await createCard(values, cardElement.current, environment);
+        const card = await createCard(values, cardElement.current);
         if (card) {
           const payment = await capturePayment(amount, values, { card }, type);
           setSubmitting(false);
@@ -64,17 +63,13 @@ export function useCheckoutSubmit() {
   async function createCard(
     values: { name_on_card: string },
     card: PublicSquareTypes.CardCreateInput['card'],
-    environment: 'TEST' | 'PRODUCTION',
   ) {
     if (values.name_on_card && card && publicsquare) {
       try {
-        const response = await publicsquare.cards.create(
-          {
-            cardholder_name: values.name_on_card,
-            card,
-          },
-          environment,
-        );
+        const response = await publicsquare.cards.create({
+          cardholder_name: values.name_on_card,
+          card,
+        });
         if (response) {
           return response;
         }
@@ -404,7 +399,7 @@ export function useCheckoutSubmit() {
     try {
       if (threeDsElement.current && !submitting) {
         setSubmitting(true);
-        const card = await createCard(values, threeDsElement.current, 'TEST');
+        const card = await createCard(values, threeDsElement.current);
         if (!card) return;
         console.debug('createCard: ', card);
 
@@ -467,7 +462,6 @@ export function useCheckoutSubmit() {
           token_id: tokenId,
           payment_intent_id: paymentIntentId,
           challenge_preference: challengePreference,
-          environment: 'TEST',
         });
         if (response) {
           return response as { id: string; bt_session_id: string; acs_transaction_id: string };
