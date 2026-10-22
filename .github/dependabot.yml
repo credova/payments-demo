@@ -5,26 +5,26 @@ updates:
     directory: /
     schedule:
       interval: cron
-      cronjob: "0 4 14 * *" # 14th, 4am LA
+      cronjob: '0 4 14 * *' # 14th, 4am LA
       timezone: America/Los_Angeles
     open-pull-requests-limit: 5
     rebase-strategy: disabled
     groups:
       bun-version:
         applies-to: version-updates
-        patterns: ["*"]
+        patterns: ['*']
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: cron
-      cronjob: "0 4 28 * *" # 28th, 4am LA
+      cronjob: '0 4 28 * *' # 28th, 4am LA
       timezone: America/Los_Angeles
     open-pull-requests-limit: 5
     rebase-strategy: disabled
     groups:
       gha-version:
         applies-to: version-updates
-        patterns: ["*"]
+        patterns: ['*']
       gha-security:
         applies-to: security-updates
-        patterns: ["*"]
+        patterns: ['*']
