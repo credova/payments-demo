@@ -1,7 +1,7 @@
 [tools]
-bun = "1.4.2"
+bun = "1.4.4"
 node = "24"
-hk = "1.58.1"
+hk = "2.8.0"
 
 [hooks]
 # `mise install` also wires up the git hooks managed by hk.pkl.
