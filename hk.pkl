@@ -33,4 +33,12 @@ hooks {
             ...linters
         }
     }
+    ["pre-push"] {
+        steps {
+            ["jactionlint"] {
+                glob = List(".github/workflows/*.{yml,yaml}", ".github/jactionlint.yaml")
+                check = "jactionlint"
+            }
+        }
+    }
 }

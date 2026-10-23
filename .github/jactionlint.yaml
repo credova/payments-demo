@@ -1,0 +1,5 @@
+profile: correctness
+
+self-hosted-runner:
+  labels:
+    - warp-ubuntu-2404-x64-2x
